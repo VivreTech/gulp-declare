@@ -6,7 +6,11 @@ var declare = require('nsdeclare');
 // Default name processing function should give the filename without extension
 var defaultProcessName = function(name) { return path.basename(name, path.extname(name)); };
 
-var processNameByPath = function(filePath) {
+var processNameByPath = function(filePath, separatorFormat) {
+  
+  // By default the separator format for join is a dot but it can be something else
+  separatorFormat = typeof separatorFormat !== 'undefined' ? separatorFormat : '.';
+  
   // Make the directory relative
   filePath = path.relative(process.cwd(), filePath);
 
@@ -20,7 +24,7 @@ var processNameByPath = function(filePath) {
   parts.push(templateName);
 
   // Turn the path into dot notation
-  return parts.join('.');
+  return parts.join(separatorFormat);
 };
 
 module.exports = function(options) {
