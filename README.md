@@ -126,9 +126,11 @@ module.exports["App"]["Header"] = /* File contents from App.Header.js */;
 module.exports["App"]["Footer"] = /* File contents from App.Footer.js */;
 ```
 
-### declare.processNameByPath(filePath)
+### declare.processNameByPath(filePath, separatorFormat)
 
 Pass this method as `options.processName` so the path within the namespace matches the path in the filesystem combined with dot notation from the filename:
+
+The `separatorFormat` is optional that it changes the dot notation in other notation type.
 
 ```js
 gulp.src(['templates/**/*.html'])
